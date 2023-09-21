@@ -5,16 +5,10 @@ pipeline {
         stage('docker build') {
             steps {
                 script {
-                    sh "docker build -t homerapp:1.0.${BUILD_ID} ."
+                    sh "docker start -d --name homerpage_container -p 80:80 homerpage:1"
                 }
             }
         }
-        stage('docker push') {
-            steps {
-                script {
-                    sh "docker push enriquegzmn/homer_page:1.0.${BUILD_ID}"
-                }
-            }
-        }
+        
     }
 }
