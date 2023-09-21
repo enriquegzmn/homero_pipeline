@@ -5,14 +5,14 @@ pipeline {
         stage('docker build') {
             steps {
                 script {
-                    sh "docker build --file homero_pipeline/Dockerfile --target enriquegzmn/homer_page:1.0.0-${BUILD_ID} homero_pipeline"
+                    sh "docker build -t homerapp:1.0.${BUILD_ID} ."
                 }
             }
         }
         stage('docker push') {
             steps {
                 script {
-                    sh "docker push enriquegzmn/homer_page:1.0.0-${BUILD_ID}"
+                    sh "docker push enriquegzmn/homer_page:1.0.${BUILD_ID}"
                 }
             }
         }
